@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react';
 import './style.css';
 import { Button } from 'antd';
+import axios, { AxiosResponse } from 'axios';
 const Home: React.FC = () => {
-	useEffect(() => {});
+	useEffect(() => {
+		axios.get('/api/isLogin').then((res: AxiosResponse) => {
+			console.log(res);
+		});
+	});
 	return (
 		<div className="home-page">
 			<Button type="primary" block>
