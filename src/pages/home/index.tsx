@@ -1,14 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import './style.css';
 import { Button } from 'antd';
 import axios, { AxiosResponse } from 'axios';
 const Home: React.FC = () => {
+	const [isLogin, setIsLogin] = useState<boolean>(false);
 	useEffect(() => {
+		let isSubscribed = true;
 		axios.get('/api/isLogin').then((res: AxiosResponse) => {
-			console.log(res);
+			if (res.data?.data) {
+				if (isSubscribed) {
+					setIsLogin(true);
+				}
+			}
 		});
-	});
-	return (
+		return () => {
+			isSubscribed = false;
+		};
+	}, []);
+	return isLogin ? (
 		<div className="home-page">
 			<Button type="primary" block>
 				爬取数据
@@ -18,6 +28,8 @@ const Home: React.FC = () => {
 				退出
 			</Button>
 		</div>
+	) : (
+		<Redirect to="/login" />
 	);
 };
 
