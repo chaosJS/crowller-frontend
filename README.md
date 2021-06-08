@@ -44,3 +44,5 @@ function demoComponent() {
 	);
 }
 ```
+
+2. 添加 echarts 展示爬取的数据
