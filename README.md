@@ -45,4 +45,7 @@ function demoComponent() {
 }
 ```
 
-2. 添加 echarts 展示爬取的数据
+2.  添加 echarts 展示爬取的数据
+3.  相关文档和学习网站
+    1.  [ts 官网](https://www.tslang.cn/)
+    2.  [ts ast 实时编译](https://ts-ast-viewer.com/#)
